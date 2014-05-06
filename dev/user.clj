@@ -5,6 +5,9 @@
 
 (def system nil)
 
+(def repl-env (reset! cemerick.austin.repls/browser-repl-env
+                      (cemerick.austin/repl-env)))
+
 (defn init
   []
   (alter-var-root #'system

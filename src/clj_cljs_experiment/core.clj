@@ -7,14 +7,11 @@
    :headers {"Content-Type" "text/html"}
    :body    "hello HTTP!"})
 
-(defrecord WebServer [server port]
+(defrecord WebServer [port]
   component/Lifecycle
-
   (start [component]
-    (println (:port component))
     (assoc component :server (run-server #'app
-                                         {:port (:port component)})))
-
+                                         {:port port})))
   (stop [component]
     ((:server component))
     (assoc component :server nil)))
